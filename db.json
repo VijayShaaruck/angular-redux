@@ -1,0 +1,25 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "name": "Angular Introduction",
+      "price": "499",
+      "description": "Angular course for beginners",
+      "membership": "Platinum"
+    },
+    {
+      "id": 2,
+      "name": "C# Introduction",
+      "price": "399",
+      "description": "C# course for beginners",
+      "membership": "Platinum"
+    },
+    {
+      "name": "asdasd",
+      "price": 234,
+      "description": "asasf",
+      "membership": "Pro",
+      "id": 3
+    }
+  ]
+}

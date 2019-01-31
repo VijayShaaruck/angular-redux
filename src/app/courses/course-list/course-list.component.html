@@ -1,0 +1,24 @@
+<h3>Available Courses</h3>
+<table class="table table-hover">
+  <thead>
+    <tr class="table-success">
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Description</th>
+      <th scope="col">Membership</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of (courses$ | async)">
+      <th scope="row">{{ course.name }}</th>
+      <td>{{ course.price }}</td>
+      <td>{{ course.description }}</td>
+      <td>{{ course.membership }}</td>
+      <th>
+        <a (click)="editCourse(course)">edit</a> <br />
+        <a (click)="deleteCourse(course)">delete</a>
+      </th>
+    </tr>
+  </tbody>
+</table>

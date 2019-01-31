@@ -1,0 +1,47 @@
+<h3>Add Course</h3>
+
+<form
+  [formGroup]="courseForm"
+  (submit)="createCourse()"
+  class="form-inline mb-4"
+>
+  <label class="sr-only" for="Name">Course Name</label>
+  <div class="input-group mb-2 mr-sm-2">
+    <input
+      type="text"
+      class="form-control"
+      formControlName="name"
+      placeholder="Course name"
+    />
+  </div>
+
+  <label class="sr-only" for="Name">Course Price</label>
+  <div class="input-group mb-2 mr-sm-2">
+    <input
+      type="number"
+      class="form-control"
+      formControlName="price"
+      placeholder="Course price"
+    />
+  </div>
+
+  <label class="sr-only" for="Address">Course Description</label>
+  <div class="input-group mb-2 mr-sm-2">
+    <input
+      type="text"
+      class="form-control"
+      formControlName="description"
+      placeholder="Course Description"
+    />
+  </div>
+
+  <label class="sr-only" for="membership">Membership</label>
+  <div class="input-group mb-2 mr-sm-2">
+    <select formControlName="membership" class="form-control">
+      <option>Basic</option>
+      <option>Pro</option>
+      <option>Platinum</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success mb-2">Add Course</button>
+</form>
