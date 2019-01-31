@@ -14,12 +14,14 @@ import {
 } from '@ngrx/router-store';
 
 import { CustomSerializer } from './shared/utils';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     NgbModule,
+    CoreModule,
     StoreModule.forRoot({
       router: routerReducer
     }),
