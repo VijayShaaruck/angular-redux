@@ -1,5 +1,17 @@
-import { CourseState } from '../courses/course-state/course.reducer';
+import { ActionReducerMap } from '@ngrx/store';
+import {
+  routerReducer,
+  RouterReducerState,
+  SerializedRouterStateSnapshot
+} from '@ngrx/router-store';
+import * as fromAuth from '../auth/state/auth.reducers';
 
 export interface AppState {
-  course: CourseState;
+  router: RouterReducerState<SerializedRouterStateSnapshot>;
+  auth: fromAuth.State;
 }
+
+export const AppReducers: ActionReducerMap<AppState> = {
+  router: routerReducer,
+  auth: fromAuth.authReducer
+};

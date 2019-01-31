@@ -1,31 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
 import {
   StoreRouterConnectingModule,
-  routerReducer,
   RouterStateSerializer
 } from '@ngrx/router-store';
 
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+
 import { CustomSerializer } from './shared/utils';
+import { AppReducers } from './state/app-state';
+import { AuthEffects } from './auth/state/auth.effects';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     NgbModule,
-    StoreModule.forRoot({
-      router: routerReducer
-    }),
+    StoreModule.forRoot(AppReducers),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     StoreDevtoolsModule.instrument(),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AuthEffects]),
     HttpClientModule,
     AppRoutingModule
   ],
