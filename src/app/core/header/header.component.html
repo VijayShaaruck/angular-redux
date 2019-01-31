@@ -7,8 +7,21 @@
   </ul> -->
 
   <div class="collapse navbar-collapse justify-content-end">
-    <button class="btn btn-outline-light" type="submit" routerLink="login">
-      {{ userStatus }}
+    <button
+      *ngIf="!(authState | async).authenticated"
+      class="btn btn-outline-light"
+      type="submit"
+      routerLink="login"
+    >
+      Login
+    </button>
+    <button
+      *ngIf="(authState | async).authenticated"
+      class="btn btn-outline-light"
+      type="submit"
+      (click)="logout()"
+    >
+      Logout
     </button>
   </div>
 </nav>

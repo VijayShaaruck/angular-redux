@@ -4,8 +4,9 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 
-import * as AuthActions from './auth.actions';
+import { AuthActionTypes } from './auth.actions';
 import { AuthService } from '../services/auth.service';
+import * as AuthActions from './auth.actions';
 
 @Injectable()
 export class AuthEffects {
@@ -17,14 +18,14 @@ export class AuthEffects {
 
   @Effect()
   authLogin = this.actions$.pipe(
-    ofType(AuthActions.AuthActionTypes.LOGIN),
+    ofType(AuthActionTypes.LOGIN),
     map((action: AuthActions.Login) => {
       return action.payload;
     }),
     mergeMap((authData: { username: string; password: string }) => {
       return this.authService.login(authData.username, authData.password).pipe(
         map((token: string) => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/courses']);
           return new AuthActions.LoginSuccess(token);
         }),
         catchError(err => {
