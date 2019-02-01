@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AppState } from 'src/app/state/app-state';
 import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { FE } from '../models/fe.model';
+import * as feReducer from '../state/fe.reducers';
 
 @Component({
   selector: 'app-fe',
@@ -8,11 +11,10 @@ import { Store, select } from '@ngrx/store';
   styleUrls: ['./fe.component.scss']
 })
 export class FeComponent implements OnInit {
-  constructor(private store: Store<AppState>) {}
+  fe: Observable<FE>;
+  constructor(private store: Store<feReducer.AppState>) {}
 
   ngOnInit() {
-    this.store.pipe(select('courses')).subscribe(values => {
-      console.log(values);
-    });
+    this.fe = this.store.select(feReducer.getCurrentFE);
   }
 }

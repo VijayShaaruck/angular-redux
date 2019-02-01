@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { TripDetails } from '../models/trip-details';
+import { TripDetails, FE } from '../models/fe.model';
 
 export enum FeActionTypes {
   SET_FE = 'SET_FE',
@@ -14,12 +14,11 @@ export class SetFE implements Action {
 
 export class LoadData implements Action {
   readonly type = FeActionTypes.LOAD_DATA;
-  constructor(public payload: string) {}
 }
 
 export class SetData implements Action {
   readonly type = FeActionTypes.SET_DATA;
-  constructor(public payload: TripDetails[]) {}
+  constructor(public payload: FE[]) {}
 }
 
 export type Action = SetFE | SetData;

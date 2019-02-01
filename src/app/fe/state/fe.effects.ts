@@ -6,7 +6,7 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 import { FeActionTypes } from './fe.actions';
 import * as FeActions from './fe.actions';
 import { FeService } from '../services/fe.service';
-import { TripDetails } from '../models/trip-details';
+import { TripDetails, FE } from '../models/fe.model';
 
 @Injectable()
 export class FeEffects {
@@ -17,25 +17,11 @@ export class FeEffects {
   ) {}
 
   @Effect()
-  selectFE = this.actions$.pipe(
-    ofType(FeActionTypes.SET_FE),
-    map((action: FeActions.SetFE) => {
-      return action.payload;
-    }),
-    map(fe => {
-      return new FeActions.LoadData(fe);
-    })
-  );
-
-  @Effect()
   feLoad = this.actions$.pipe(
     ofType(FeActionTypes.LOAD_DATA),
-    map((action: FeActions.LoadData) => {
-      return action.payload;
-    }),
-    mergeMap(fe => {
-      return this.feService.getTripDetails(fe).pipe(
-        map((value: TripDetails[]) => {
+    mergeMap(() => {
+      return this.feService.loadFEs().pipe(
+        map((value: FE[]) => {
           return new FeActions.SetData(value);
         })
         // catchError(err => {

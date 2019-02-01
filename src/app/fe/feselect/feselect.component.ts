@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FeState } from '../state/fe.reducers';
 import { Store } from '@ngrx/store';
-import { SetFE } from '../state/fe.actions';
+import { SetFE, LoadData } from '../state/fe.actions';
 
 @Component({
   selector: 'app-feselect',
@@ -16,6 +16,7 @@ export class FESelectComponent implements OnInit {
 
   ngOnInit() {
     this.feList = ['001', '002', '003'];
+    this.store.dispatch(new LoadData());
   }
 
   onSelect(fe) {
