@@ -13,13 +13,6 @@
       "price": "399",
       "description": "C# course for beginners",
       "membership": "Platinum"
-    },
-    {
-      "name": "asdasd",
-      "price": 234,
-      "description": "asasf",
-      "membership": "Pro",
-      "id": 3
     }
   ]
 }
