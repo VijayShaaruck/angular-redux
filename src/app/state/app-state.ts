@@ -8,7 +8,7 @@ import * as fromAuth from '../auth/state/auth.reducers';
 
 export interface AppState {
   router: RouterReducerState<SerializedRouterStateSnapshot>;
-  auth: fromAuth.State;
+  auth: fromAuth.AuthState;
 }
 
 export const AppReducers: ActionReducerMap<AppState> = {

@@ -22,19 +22,31 @@ export class AuthEffects {
     map((action: AuthActions.Login) => {
       return action.payload;
     }),
-    mergeMap((authData: { username: string; password: string }) => {
-      return this.authService.login(authData.username, authData.password).pipe(
-        map((value: LoginResponse) => {
-          this.router.navigate(['/courses']);
-          return new AuthActions.LoginSuccess({
-            username: value.username,
-            token: value.token
-          });
-        }),
-        catchError(err => {
-          return of(new AuthActions.LoginFail(err));
-        })
-      );
-    })
+    mergeMap(
+      (authData: {
+        username: string;
+        password: string;
+        redirectUrl: string;
+      }) => {
+        return this.authService
+          .login(authData.username, authData.password)
+          .pipe(
+            map((value: LoginResponse) => {
+              if (authData.redirectUrl) {
+                this.router.navigate([authData.redirectUrl]);
+              } else {
+                this.router.navigate(['/']);
+              }
+              return new AuthActions.LoginSuccess({
+                username: value.username,
+                token: value.token
+              });
+            }),
+            catchError(err => {
+              return of(new AuthActions.LoginFail(err));
+            })
+          );
+      }
+    )
   );
 }

@@ -27,12 +27,6 @@ const courseRoutes: Routes = [{ path: '', component: CourseComponent }];
     RouterModule.forChild(courseRoutes),
     StoreModule.forFeature('courses', courseReducer),
     EffectsModule.forFeature([CourseEffect])
-  ],
-  exports: [
-    CourseComponent,
-    CourseAddComponent,
-    CourseEditComponent,
-    CourseListComponent
   ]
 })
 export class CoursesModule {}

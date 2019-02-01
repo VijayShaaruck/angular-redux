@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FeState } from '../state/fe.reducers';
+import { Store } from '@ngrx/store';
+import { LoadData } from '../state/fe.actions';
 
 @Component({
   selector: 'app-feselect',
@@ -6,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./feselect.component.scss']
 })
 export class FESelectComponent implements OnInit {
+  feList: string[];
 
-  constructor() { }
+  constructor(private router: Router, private store: Store<FeState>) {}
 
   ngOnInit() {
+    this.feList = ['001', '002', '003'];
   }
 
+  onSelect(fe) {
+    this.store.dispatch(new LoadData(fe));
+    this.router.navigate(['/fe', fe]);
+  }
 }

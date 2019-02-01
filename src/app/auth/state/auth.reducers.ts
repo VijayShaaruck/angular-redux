@@ -1,13 +1,13 @@
 import { Action, AuthActionTypes } from './auth.actions';
 
-export interface State {
+export interface AuthState {
   token: string;
   authenticated: boolean;
   username: string;
   error: string;
 }
 
-const initialState: State = {
+const initialState: AuthState = {
   token: null,
   authenticated: false,
   username: null,
