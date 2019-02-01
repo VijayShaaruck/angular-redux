@@ -35,6 +35,7 @@ export class CourseEditComponent implements OnInit {
     course$.subscribe(currentCourse => {
       if (currentCourse) {
         this.courseForm.patchValue({
+          id: currentCourse.id,
           name: currentCourse.name,
           price: currentCourse.price,
           description: currentCourse.description,

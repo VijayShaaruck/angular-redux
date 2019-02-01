@@ -16,8 +16,9 @@
       <td>{{ course.description }}</td>
       <td>{{ course.membership }}</td>
       <th>
-        <a (click)="editCourse(course)">edit</a> <br />
-        <a (click)="deleteCourse(course)">delete</a>
+        <a href="javascript:void(0)" (click)="editCourse(course)">edit</a>
+        <br />
+        <a href="javascript:void(0)" (click)="deleteCourse(course)">delete</a>
       </th>
     </tr>
   </tbody>
