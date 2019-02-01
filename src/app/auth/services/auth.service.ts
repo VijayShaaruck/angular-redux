@@ -8,9 +8,9 @@ import * as uuid4 from 'uuid/v4';
 export class AuthService {
   constructor() {}
 
-  login(username: string, password: string): Observable<string> {
+  login(username: string, password: string): Observable<LoginResponse> {
     if (username === password) {
-      return of(uuid4());
+      return of(new LoginResponse(username, uuid4()));
     }
     return throwError('Invalid username or password');
   }
@@ -18,4 +18,8 @@ export class AuthService {
   logout(): Observable<boolean> {
     return of(true);
   }
+}
+
+export class LoginResponse {
+  constructor(public username: string, public token: string) {}
 }

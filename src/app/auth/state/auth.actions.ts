@@ -14,7 +14,7 @@ export class Login implements Action {
 
 export class LoginSuccess implements Action {
   readonly type = AuthActionTypes.LOGIN_SUCCESS;
-  constructor(public payload: string) {}
+  constructor(public payload: { username: string; token: string }) {}
 }
 
 export class Logout implements Action {

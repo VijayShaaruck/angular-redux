@@ -26,7 +26,7 @@ export class CourseService {
   }
 
   updateCourse(course: Course): Observable<Course> {
-    return this.http.patch<Course>(`${this.coursesUrl}/${course.name}`, course);
+    return this.http.patch<Course>(`${this.coursesUrl}/${course.id}`, course);
   }
 
   deleteCourse(payload: number) {
