@@ -7,6 +7,14 @@
   </ul> -->
 
   <div class="collapse navbar-collapse justify-content-end">
+    <select
+      *ngIf="(authState | async).authenticated"
+      class="form-control input-group col-1 mr-3"
+    >
+      <option>FE:001</option>
+      <option>FE:002</option>
+      <option>FE:003</option>
+    </select>
     <span
       *ngIf="(authState | async).authenticated"
       style="color:white"
