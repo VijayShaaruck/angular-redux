@@ -14,11 +14,9 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   authState: Observable<State>;
-  username: Observable<State>;
   constructor(private store: Store<AppState>, private router: Router) {}
   ngOnInit() {
     this.authState = this.store.pipe(select('auth'));
-    this.username = this.store.pipe(select('auth'));
   }
 
   logout() {

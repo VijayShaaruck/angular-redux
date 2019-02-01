@@ -11,7 +11,7 @@
       *ngIf="(authState | async).authenticated"
       style="color:white"
       class="mr-2"
-      >Welcome {{ (username | async).token }} !</span
+      >Welcome {{ (authState | async).username }} !</span
     >
     <button
       *ngIf="!(authState | async).authenticated"
