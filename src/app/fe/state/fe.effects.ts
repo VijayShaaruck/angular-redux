@@ -17,6 +17,17 @@ export class FeEffects {
   ) {}
 
   @Effect()
+  selectFE = this.actions$.pipe(
+    ofType(FeActionTypes.SET_FE),
+    map((action: FeActions.SetFE) => {
+      return action.payload;
+    }),
+    map(fe => {
+      return new FeActions.LoadData(fe);
+    })
+  );
+
+  @Effect()
   feLoad = this.actions$.pipe(
     ofType(FeActionTypes.LOAD_DATA),
     map((action: FeActions.LoadData) => {

@@ -10,11 +10,11 @@ export class FeService {
 
   getTripDetails(fe: string): Observable<TripDetails[]> {
     return of([
-      new TripDetails('', '', '', '', '', '', '', '', '', '', '', ''),
-      new TripDetails('', '', '', '', '', '', '', '', '', '', '', ''),
-      new TripDetails('', '', '', '', '', '', '', '', '', '', '', ''),
-      new TripDetails('', '', '', '', '', '', '', '', '', '', '', ''),
-      new TripDetails('', '', '', '', '', '', '', '', '', '', '', '')
+      new TripDetails('001', '', ''),
+      new TripDetails('001', '', ''),
+      new TripDetails('001', '', ''),
+      new TripDetails('001', '', ''),
+      new TripDetails('001', '', '')
     ]);
   }
 }
