@@ -1,6 +1,6 @@
 import * as courseActions from './course.actions';
 import { Course } from '../course.model';
-import * as fromRoot from '../../state/app-state';
+import * as fromRoot from '../../state/app.state';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';

@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EffectsModule } from '@ngrx/effects';
 import {
   StoreRouterConnectingModule,
   RouterStateSerializer
@@ -14,9 +13,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { CustomSerializer } from './shared/utils';
-import { AppReducers } from './state/app-state';
-import { AuthEffects } from './auth/state/auth.effects';
+import { AppReducers } from './state/app.state';
 import { CoreModule } from './core/core.module';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,9 +24,9 @@ import { CoreModule } from './core/core.module';
     NgbModule,
     CoreModule,
     StoreModule.forRoot(AppReducers),
+    EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     StoreDevtoolsModule.instrument(),
-    EffectsModule.forRoot([AuthEffects]),
     HttpClientModule,
     AppRoutingModule
   ],

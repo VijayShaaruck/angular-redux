@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [HeaderComponent, SidenavComponent],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   exports: [HeaderComponent, SidenavComponent]
 })
 export class CoreModule {}

@@ -8,7 +8,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { courseReducer } from './course-state/course.reducer';
-import { EffectsModule, Actions } from '@ngrx/effects';
+import { EffectsModule } from '@ngrx/effects';
 import { CourseEffect } from './course-state/course.effects';
 
 const courseRoutes: Routes = [{ path: '', component: CourseComponent }];

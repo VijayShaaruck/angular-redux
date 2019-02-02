@@ -10,6 +10,7 @@
               formControlName="username"
               id="username"
               class="form-control"
+              (focus)="onFocus()"
             />
             <label class="mt-1"> Password</label>
             <input
@@ -17,6 +18,7 @@
               formControlName="password"
               id="password"
               class="form-control"
+              (focus)="onFocus()"
             />
             <div class="row">
               <div class="col-sm-12">
@@ -30,6 +32,11 @@
                   </button>
                 </div>
               </div>
+            </div>
+            <div class="row">
+              <p class="text-danger text-center">
+                {{ (errorState | async)?.error }}
+              </p>
             </div>
           </div>
         </form>

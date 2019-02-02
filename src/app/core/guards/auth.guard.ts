@@ -7,7 +7,7 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { AppState } from 'src/app/state/app-state';
+import { AppState } from 'src/app/state/app.state';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -31,7 +31,7 @@ export class AuthGuard implements CanActivate {
   private async validate() {
     await new Promise((resolve, reject) => {
       this.store.pipe(select('auth')).subscribe(value => {
-        this.isAuthenticated = value.authenticated;
+        this.isAuthenticated = value ? value.authenticated : false;
         resolve();
       });
     });

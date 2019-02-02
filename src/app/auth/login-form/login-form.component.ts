@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 
 import { User } from '../models/user-modal';
 import * as AuthActions from '../state/auth.actions';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AppState } from 'src/app/state/app-state';
+import { ActivatedRoute } from '@angular/router';
+import { AppState } from 'src/app/state/app.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login-form',
@@ -14,6 +15,7 @@ import { AppState } from 'src/app/state/app-state';
 })
 export class LoginFormComponent implements OnInit {
   loginForm: FormGroup;
+  errorState: Observable<AppState>;
 
   constructor(
     private fb: FormBuilder,
@@ -23,6 +25,7 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    this.errorState = this.store.pipe(select('auth'));
   }
 
   buildForm() {
@@ -32,9 +35,13 @@ export class LoginFormComponent implements OnInit {
     });
   }
 
+  onFocus() {
+    this.store.dispatch(new AuthActions.ClearError());
+  }
+
   onSubmit({ value, valid }: { value: User; valid: boolean }) {
     if (valid) {
-      const targetUrl = this.router.params.subscribe(params => {
+      this.router.params.subscribe(params => {
         this.store.dispatch(
           new AuthActions.Login({
             username: value.username,

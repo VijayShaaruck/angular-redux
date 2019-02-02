@@ -1,28 +1,24 @@
 <nav class="navbar navbar-expand-lg bg-success navbar-dark">
   <a class="navbar-brand" href="#"> NGRX </a>
-  <!-- <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/courses']">Courses</a>
-    </li>
-  </ul> -->
-
   <div class="collapse navbar-collapse justify-content-end">
     <select
-      *ngIf="(authState | async).authenticated"
+      *ngIf="show"
       class="form-control input-group col-1 mr-3"
+      [ngModel]="(selectedFEState | async)?.selectedFE"
+      (change)="onSelect($event.target.value)"
     >
-      <option>FE:001</option>
-      <option>FE:002</option>
-      <option>FE:003</option>
+      <option>001</option>
+      <option>002</option>
+      <option>003</option>
     </select>
     <span
-      *ngIf="(authState | async).authenticated"
+      *ngIf="(authState | async)?.authenticated"
       style="color:white"
       class="mr-2"
-      >Welcome {{ (authState | async).username }} !</span
+      >Welcome {{ (authState | async).username }}!</span
     >
     <button
-      *ngIf="!(authState | async).authenticated"
+      *ngIf="!(authState | async)?.authenticated"
       class="btn btn-outline-light"
       type="submit"
       routerLink="login"
@@ -30,7 +26,7 @@
       Login
     </button>
     <button
-      *ngIf="(authState | async).authenticated"
+      *ngIf="(authState | async)?.authenticated"
       class="btn btn-outline-light"
       type="submit"
       (click)="logout()"

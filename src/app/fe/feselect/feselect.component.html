@@ -1,5 +1,9 @@
 <div>
-  <a class="btn btn-sucess" *ngFor="let fe of feList" (click)="onSelect(fe)">{{
-    fe
-  }}</a>
+  <button
+    class="btn btn-outline-primary"
+    *ngFor="let fe of feList"
+    (click)="onSelect(fe)"
+  >
+    {{ fe }}
+  </button>
 </div>

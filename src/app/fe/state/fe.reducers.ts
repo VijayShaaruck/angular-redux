@@ -1,8 +1,9 @@
 import { Action, FeActionTypes } from './fe.actions';
 import { TripDetails, FE } from '../models/fe.model';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import * as fromRoot from '../../state/app-state';
+import * as fromRoot from '../../state/app.state';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { AppFEAction, AppFEActionTypes } from 'src/app/state/app.actions';
 
 export interface FeState extends EntityState<FE> {
   selectedFE: string | null;
@@ -17,14 +18,14 @@ export const feAdapter: EntityAdapter<FE> = createEntityAdapter<FE>();
 const defaultFe: FeState = {
   ids: [],
   entities: {},
-  selectedFE: null
+  selectedFE: ''
 };
 
 export const initialState = feAdapter.getInitialState(defaultFe);
 
-export function feReducer(state = initialState, action: Action) {
+export function feReducer(state = initialState, action: Action | AppFEAction) {
   switch (action.type) {
-    case FeActionTypes.SET_FE:
+    case AppFEActionTypes.SET_FE:
       return {
         ...state,
         selectedFE: action.payload
