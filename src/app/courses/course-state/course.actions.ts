@@ -18,7 +18,8 @@ export enum CourseActionTypes {
   UPDATE_COURSE_FAIL = '[Course] update Course Fail',
   DELETE_COURSE = '[Course] delete Course',
   DELETE_COURSE_SUCCESS = '[Course] delete Course Success',
-  DELETE_COURSE_FAIL = '[Course] delete Course Fail'
+  DELETE_COURSE_FAIL = '[Course] delete Course Fail',
+  CLEAR_COURSES = '[Course] clear all courses'
 }
 
 // Load Multiple Courses
@@ -114,6 +115,10 @@ export class DeleteCourseFail implements Action {
   constructor(public payload: string) {}
 }
 
+export class ClearCourses implements Action {
+  readonly type = CourseActionTypes.CLEAR_COURSES;
+}
+
 export type Action =
   | LoadCourses
   | LoadCoursesSuccess
@@ -129,4 +134,5 @@ export type Action =
   | UpdateCourseFail
   | DeleteCourse
   | DeleteCourseSuccess
-  | DeleteCourseFail;
+  | DeleteCourseFail
+  | ClearCourses;

@@ -116,6 +116,10 @@ export function courseReducer(
       return { ...state, error: action.payload };
     }
 
+    case courseActions.CourseActionTypes.CLEAR_COURSES: {
+      return courseAdapter.removeAll(state);
+    }
+
     default: {
       return state;
     }
